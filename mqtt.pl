@@ -35,12 +35,12 @@ sub format_status {
 	my ($slot) = @_;
 
 	my $ret;
-	if ($slot->{Status} eq 'SelectRec') {
+	if ($slot->{Status} =~ /Rec$/) {
 		$ret = 'rec';
-	} elsif ($slot->{Status} eq 'NoSelect') {
-		$ret = 'idle';
+	} elsif ($slot->{Status} eq 'Invalid' or $slot->{Status} eq 'NoCard') {
+		$ret = 'nocard';
 	} else {
-		$ret = 'unknown';
+		$ret = 'idle';
 	}
 
 	return $ret . " " . $slot->{Remain} . " min";

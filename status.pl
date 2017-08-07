@@ -30,12 +30,12 @@ sub dump_slot {
 	say "SD card slot ${name}:";
 
 	my $pretty_status;
-	if ($slot->{Status} eq 'SelectRec') {
+	if ($slot->{Status} =~ /Rec$/) {
 		$pretty_status = "recording";
-	} elsif ($slot->{Status} eq 'NoSelect') {
-		$pretty_status = "idle";
+	} elsif ($slot->{Status} eq 'Invalid' or $slot->{Status} eq 'NoCard') {
+		$pretty_status = "nocard";
 	} else {
-		$pretty_status = "unknown ($slot->{Status})";
+		$pretty_status = "idle";
 	}
 
 	say " Status: " . $pretty_status;
