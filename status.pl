@@ -22,6 +22,7 @@ die "host needs to be given" unless $host;
 my $j = JVC->new(host => $host, session => $session);
 
 my $r = $j->cmd("GetCamStatus");
+exit 1 unless $r;
 
 sub dump_slot {
 	my ($name, $slot) = @_;
