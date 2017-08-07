@@ -111,4 +111,10 @@ restart:
 	return $json->{Response}{Data};
 }
 
+sub get_status {
+	my ($self) = @_;
+
+	return $self->cmd("GetCamStatus");
+}
+
 1;
